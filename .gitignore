@@ -1,0 +1,19 @@
+**/.DS_Store
+**/.ipynb_checkpoints
+**/__pycache__
+.idea/
+*.pyc
+.vscode/
+tests_and_drafts/
+
+build/
+dist/
+*.egg-info/
+*.egg
+*.py[cod]
+*.so
+*~
+
+# due to using tox and pytest
+.tox
+.cache
