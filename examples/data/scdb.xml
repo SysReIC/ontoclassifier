@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://www.univ-littoral.fr/lisic/sysreic/scdb.xml"
+         xmlns="https://www.univ-littoral.fr/lisic/sysreic/scdb.xml#">
+
+<owl:Ontology rdf:about="https://www.univ-littoral.fr/lisic/sysreic/scdb.xml"/>
+
+<owl:ObjectProperty rdf:about="#hasConcept">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:domain rdf:resource="#Lesion"/>
+  <rdfs:range rdf:resource="#Concept"/>
+  <owl:inverseOf rdf:resource="#isConceptOf"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isConceptOf">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+  <rdfs:range rdf:resource="#Lesion"/>
+  <rdfs:domain rdf:resource="#Concept"/>
+  <owl:inverseOf rdf:resource="#hasConcept"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#DomainThing">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Lesion">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:someValuesFrom rdf:resource="#Concept"/>
+      <owl:onProperty rdf:resource="#hasConcept"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+  <owl:disjointWith rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Concept">
+  <rdfs:subClassOf rdf:resource="#DomainThing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cross">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Ellipse">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Hexagon">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Line">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Pentagon">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Rectangle">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Star">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Starmarker">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Triangle">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Tripod">
+  <rdfs:subClassOf rdf:resource="#Concept"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C1_super">
+  <rdfs:subClassOf rdf:resource="#Lesion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C1_a">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Hexagon"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Star"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C1_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C1_b">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Ellipse"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Star"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C1_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C1_c">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Triangle"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Ellipse"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Starmarker"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C1_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C1">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#C1_a"/>
+        <rdf:Description rdf:about="#C1_b"/>
+        <rdf:Description rdf:about="#C1_c"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#Lesion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C2_super">
+  <rdfs:subClassOf rdf:resource="#Lesion"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C2_a">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Pentagon"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Tripod"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C2_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C2_b">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Star"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Tripod"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C2_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C2_c">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Rectangle"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Star"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasConcept"/>
+          <owl:someValuesFrom rdf:resource="#Starmarker"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#C2_super"/>
+</owl:Class>
+
+<owl:Class rdf:about="#C2">
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:unionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#C2_a"/>
+        <rdf:Description rdf:about="#C2_b"/>
+        <rdf:Description rdf:about="#C2_c"/>
+      </owl:unionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#Lesion"/>
+</owl:Class>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Cross"/>
+    <rdf:Description rdf:about="#Ellipse"/>
+    <rdf:Description rdf:about="#Hexagon"/>
+    <rdf:Description rdf:about="#Line"/>
+    <rdf:Description rdf:about="#Pentagon"/>
+    <rdf:Description rdf:about="#Rectangle"/>
+    <rdf:Description rdf:about="#Star"/>
+    <rdf:Description rdf:about="#Starmarker"/>
+    <rdf:Description rdf:about="#Triangle"/>
+    <rdf:Description rdf:about="#Tripod"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>

@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/lewandowski/ontologies/2023/2/xtrains"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/lewandowski/ontologies/2023/2/xtrains">
+    <Prefix name="" IRI="http://www.semanticweb.org/lewandowski/ontologies/2023/2/xtrains"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#EmptyTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#EmptyWagon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FreightTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FreightWagon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Locomotive"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LongFreightTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LongTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LongWagon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#MixedTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OpenRoofCar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PassengerCar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PassengerTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReinforcedCar"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RuralTrain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Train"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TypeA"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TypeB"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TypeC"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Wagon"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WarTrain"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#has"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#EmptyTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectAllValuesFrom>
+                <ObjectProperty IRI="#has"/>
+                <ObjectUnionOf>
+                    <Class IRI="#EmptyWagon"/>
+                    <Class IRI="#Locomotive"/>
+                </ObjectUnionOf>
+            </ObjectAllValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#FreightTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectMinCardinality cardinality="2">
+                <ObjectProperty IRI="#has"/>
+                <Class IRI="#FreightWagon"/>
+            </ObjectMinCardinality>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LongFreightTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectIntersectionOf>
+                <Class IRI="#FreightTrain"/>
+                <Class IRI="#LongTrain"/>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#LongTrain"/>
+        <ObjectUnionOf>
+            <ObjectMinCardinality cardinality="2">
+                <ObjectProperty IRI="#has"/>
+                <Class IRI="#LongWagon"/>
+            </ObjectMinCardinality>
+            <ObjectMinCardinality cardinality="3">
+                <ObjectProperty IRI="#has"/>
+                <Class IRI="#Wagon"/>
+            </ObjectMinCardinality>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#MixedTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectIntersectionOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#EmptyWagon"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#FreightWagon"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#PassengerCar"/>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#PassengerTrain"/>
+        <ObjectUnionOf>
+            <ObjectSomeValuesFrom>
+                <ObjectProperty IRI="#has"/>
+                <ObjectIntersectionOf>
+                    <Class IRI="#LongWagon"/>
+                    <Class IRI="#PassengerCar"/>
+                </ObjectIntersectionOf>
+            </ObjectSomeValuesFrom>
+            <ObjectMinCardinality cardinality="2">
+                <ObjectProperty IRI="#has"/>
+                <Class IRI="#PassengerCar"/>
+            </ObjectMinCardinality>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#RuralTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectIntersectionOf>
+                <ObjectComplementOf>
+                    <ObjectSomeValuesFrom>
+                        <ObjectProperty IRI="#has"/>
+                        <Class IRI="#LongWagon"/>
+                    </ObjectSomeValuesFrom>
+                </ObjectComplementOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#EmptyWagon"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <ObjectUnionOf>
+                        <Class IRI="#FreightWagon"/>
+                        <Class IRI="#PassengerCar"/>
+                    </ObjectUnionOf>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Train"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#has"/>
+            <ObjectUnionOf>
+                <Class IRI="#Locomotive"/>
+                <Class IRI="#Wagon"/>
+            </ObjectUnionOf>
+        </ObjectSomeValuesFrom>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TypeA"/>
+        <ObjectUnionOf>
+            <Class IRI="#EmptyTrain"/>
+            <Class IRI="#WarTrain"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TypeB"/>
+        <ObjectUnionOf>
+            <Class IRI="#LongFreightTrain"/>
+            <Class IRI="#PassengerTrain"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#TypeC"/>
+        <ObjectUnionOf>
+            <Class IRI="#MixedTrain"/>
+            <Class IRI="#RuralTrain"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Wagon"/>
+        <ObjectUnionOf>
+            <Class IRI="#EmptyWagon"/>
+            <Class IRI="#FreightWagon"/>
+            <Class IRI="#PassengerCar"/>
+        </ObjectUnionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#WarTrain"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Train"/>
+            <ObjectIntersectionOf>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#PassengerCar"/>
+                </ObjectSomeValuesFrom>
+                <ObjectSomeValuesFrom>
+                    <ObjectProperty IRI="#has"/>
+                    <Class IRI="#ReinforcedCar"/>
+                </ObjectSomeValuesFrom>
+            </ObjectIntersectionOf>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#EmptyWagon"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FreightWagon"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LongTrain"/>
+        <Class IRI="#Train"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LongWagon"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OpenRoofCar"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PassengerCar"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PassengerTrain"/>
+        <Class IRI="#Train"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReinforcedCar"/>
+        <Class IRI="#Wagon"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#EmptyWagon"/>
+        <Class IRI="#FreightWagon"/>
+        <Class IRI="#PassengerCar"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Locomotive"/>
+        <Class IRI="#Wagon"/>
+    </DisjointClasses>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#has"/>
+        <Class IRI="#Train"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#has"/>
+        <ObjectUnionOf>
+            <Class IRI="#Locomotive"/>
+            <Class IRI="#Wagon"/>
+        </ObjectUnionOf>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

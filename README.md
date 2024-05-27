@@ -1,5 +1,16 @@
 # ontoclassifier
 
+## What is it ?
+
+## How to use it ?
+
+See examples in 3 notebooks:
+
+- [Pizzaiolo classification notebook](examples/Pizzaiolo_pipeline.ipynb)
+- [XTRAINS classification notebook](examples/XTRAINS_pipeline.ipynb)
+- [SCDB notebook](examples/SCDB_pipeline.ipynb)
+
+
 ## Authors
 
 Grégory Bourguin<sup>1</sup> & Arnaud Lewandowski<sup>2</sup>  
@@ -14,3 +25,8 @@ SysReIC (Systèmes Réflexifs et Ingenierie de la Connaissance)
 
 [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
+<center>
+
+[<img src="https://lisic-prod.univ-littoral.fr/wp-content/uploads/2023/05/ULCO.png" alt="logo ULCO" width="auto" height="50">](https://lisic-prod.univ-littoral.fr) &nbsp;&nbsp;&nbsp;&nbsp; [<img src="https://lisic-prod.univ-littoral.fr/wp-content/uploads/2023/05/LISIC.png" alt="logo LISIC" width="auto" height="50">](https://www.univ-littoral.fr/)
+
+</center>
