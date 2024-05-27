@@ -2,6 +2,16 @@
 
 ## What is it ?
 
+Ontoclassifier is a module implementing a Concept-Based approach. From concepts detected by third-party ML models, the ontoclassifier can infer classes (predictions) corresponding to Description Logic rules. 
+
+The ontoclassifier can be directly plugged into a pytorch AI pipeline. 
+
+For example, if a ML model can detect ingredients on a pizza, the ontoclassifier can infer the pizza receipe and characteristics. Furthermore, this classification is fully transparent and explainable since it is based on logical rules. 
+
+<center>
+<img src="doc/images/ontoclassifier-approach.png" alt="Ontoclassifier approach" width="600" height="auto">
+</center>
+
 ## How to use it ?
 
 See examples in 3 notebooks:
