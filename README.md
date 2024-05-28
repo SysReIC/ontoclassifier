@@ -9,7 +9,7 @@ The ontoclassifier can be directly plugged into a pytorch AI pipeline.
 For example, if a ML model can detect ingredients on a pizza, the ontoclassifier can infer the pizza receipe and characteristics. Furthermore, this classification is fully transparent and explainable since it is based on logical rules. 
 
 <center>
-<img src="doc/images/ontoclassifier-approach.png" alt="Ontoclassifier approach" width="600" height="auto">
+<img src="doc/images/ontoclassifier-approach.jpg" alt="Ontoclassifier approach" width="600" height="auto">
 </center>
 
 ## How to use it ?
