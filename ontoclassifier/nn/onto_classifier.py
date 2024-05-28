@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 from sklearn.preprocessing import MultiLabelBinarizer
 from joblib import dump, load
-import time
+# import time
 
 # from ontoclassifier.nn import OntologicalExtractor
 from ontoclassifier.nn import *

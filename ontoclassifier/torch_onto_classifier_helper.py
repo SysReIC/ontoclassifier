@@ -1,8 +1,6 @@
 import owlready2
 import torch
 from functools import cmp_to_key
-from icecream import ic
-from pprint import pprint
 
 
 class OntoClassifierHelper:
@@ -32,7 +30,7 @@ class OntoClassifierHelper:
 
     @staticmethod
     def nb_bits_for(value):
-        return (torch.log2(value) + 1).int()
+        return int((torch.log2(value) + 1).int())
 
     @staticmethod
     def partition(entity_list):
@@ -49,7 +47,7 @@ class OntoClassifierHelper:
                 instances.append(e)
                 for c in e.is_a:
                     classes.append(c)
-                    if not c in entity_list:
+                    if c not in entity_list:
                         classes_to_remove.append(c)
 
         for c in classes:
@@ -103,7 +101,7 @@ class OntoClassifierHelper:
 
         c1_ancestors = c1.ancestors()
         hierarchy = c1_ancestors.union(c1.descendants())
-        if not c2 in hierarchy:
+        if c2 not in hierarchy:
             return 0
             print(c1.name, "::",  hierarchy)
             print(c2.name,)
@@ -167,7 +165,7 @@ class OntoClassifierHelper:
     @staticmethod
     def get_subs(onto_class_list):
         try:  # check if list or single entity
-            iterator = iter(onto_class_list)
+            _ = iter(onto_class_list)
         except TypeError:
             onto_class_list = [onto_class_list]
 

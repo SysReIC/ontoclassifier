@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from ontoclassifier.wrappers import PropertyWrapper
 
-import time
+# import time
 
 class FeaturesExtractor(nn.Module):
     
@@ -24,23 +24,20 @@ class FeaturesExtractor(nn.Module):
         extracted_features = list()
         for model, pwrappers in self.model_to_pw.items():
             if model:
-                start_time = time.time()
+                # start_time = time.time()
                 result = model.model(x)
-                end_time = time.time()
+                # end_time = time.time()
 
-                with open('/tmp/oc_stats.csv', 'a') as file:
-                    file.write(str(end_time - start_time) + ';')
+                # with open('/tmp/oc_stats.csv', 'a') as file:
+                #     file.write(str(end_time - start_time) + ';')
                 # print("Model time: " + str(end_time - start_time))
             else:
                 # if no model, output = input
                 result = x
-            # start_time = time.time()
+                
             for pw in pwrappers:
                 extracted_features.append(pw.extract_from(result))
-            # end_time = time.time()
-            # total_time += end_time - start_time
-                
-        # print ("batch time: %.3f " % total_time)
+
         # concatenate extracted features and return it
         merged_extracted_features = torch.cat(extracted_features, dim=1)
         ic("FE output:" + str(merged_extracted_features.shape))

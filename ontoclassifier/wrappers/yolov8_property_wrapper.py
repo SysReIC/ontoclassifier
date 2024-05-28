@@ -3,7 +3,7 @@ from ultralytics.utils import ops
 from ontoclassifier.torch_onto_classifier_helper import OntoClassifierHelper
 from ontoclassifier.wrappers import PropertyWrapper
 from ontoclassifier import OntoFeature
-import time
+# import time
 
 class YoloV8PropertyWrapper(PropertyWrapper):
 
@@ -67,7 +67,7 @@ class YoloV8PropertyWrapper(PropertyWrapper):
         if isinstance(result, (list, tuple)):
             result = result[0]
 
-        t1 = time.time()
+        # t1 = time.time()
         
         yolov8_predictions = ops.non_max_suppression(
             result.detach().clone(),
@@ -78,10 +78,9 @@ class YoloV8PropertyWrapper(PropertyWrapper):
             #nc=len(self.model.names),
         )
 
-        t2 = time.time()
-        with open('/tmp/oc_stats.csv', 'a') as file:
-            file.write(str(t2 - t1) + ';')
-        # print (" nms :", str(t2 - t1) )
+        # t2 = time.time()
+        # with open('/tmp/oc_stats.csv', 'a') as file:
+        #     file.write(str(t2 - t1) + ';')
         
         # batch inference working ?
         # see https://github.com/ultralytics/ultralytics/issues/1310
@@ -140,7 +139,7 @@ class YoloV8PropertyWrapper(PropertyWrapper):
         )
         ## TODO : si le nb de classes est trop grand (>31) ça marche plus...(à cause du 2**result)
         ## Donc restrictions : NB classes < 32 ET  NB détections < 32 ... bof bof bof. Faudrait déjà passer à 64
-        # print(mask.shape, class2prop_mapping.shape)
+        ## DONE: on est passé à 64. 
         ontoclassifier_inputs = torch.einsum("ijkl, kl->ikj",
                                              mask.float(), class2prop_mapping.float().to(device=self.model.device)).int()
 
