@@ -56,28 +56,16 @@ class OntologicalExtractorExplainer:
 
             # if isinstance(feature_extractor, Yolov8Wrapper) :
             # TODO: le test marche pas toujours je sais pas pourquoi ??
-            # if str(type(feature_extractor)) == str(Yolov8Wrapper):
-            #     boxes = feature_extractor.explain(corresponding_inputs, reason)
-            #     fig = OCEViz.show_boxes(
-            #         corresponding_inputs.squeeze(0),
-            #         boxes,
-            #         feature_extractor.feature_names,
-            #     )
-            #     # OCEViz.update_title(fig, explainer.strForRestriction(reason) + ' is ' + str(result))
-            #     OCEViz.update_title(fig, str(key) + "\n is " + str(result))
-            #     fig.show()
                 
-            if str(type(feature_extractor)) == str(YoloV8PropertyWrapper) or str(type(feature_extractor)) == str(YoloV8NBPropertyWrapper):
+            if str(type(feature_extractor)) == str(YoloV8PropertyWrapper):
                 if reason is None:
                     boxes = None
                 else:
                     indexes_to_highlight = reason.any(1).int().tile((6, 1)).transpose(1, 0)
                     boxes = torch.mul(feature_extractor.last_prediction, indexes_to_highlight)
-                fig = OCEViz.show_boxes(
+                OCEViz.show_boxes(
                     corresponding_inputs.squeeze(0),
                     boxes,
                     feature_extractor.feature_range_names,
+                    title=str(key) + "\n is " + str(result),
                 )
-                # OCEViz.update_title(fig, explainer.strForRestriction(reason) + ' is ' + str(result))
-                OCEViz.update_title(fig, str(key) + "\n is " + str(result))
-                fig.show()
