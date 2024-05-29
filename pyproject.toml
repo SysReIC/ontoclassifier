@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="ontoclassifier"
+version="0.1.0"
+authors = [
+    {name = "Grégory Bourguin", email = "gregory.bourguin@univ-littoral.fr"},
+    {name = "Arnaud Lewandowski", email = "arnaud.lewandowski@univ-littoral.fr"},
+]
+description="Ontology-based Pytorch classifier"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "icecream",
+    "joblib",
+    "matplotlib",
+    "numpy",
+    "owlready2",
+    "scikit-learn",
+    "torch",
+    "ultralytics",
+]
+
+[project.urls]
+Homepage = "https://github.com/SysReIC/ontoclassifier"
+Issues = "https://github.com/SysReIC/ontoclassifier/issues"
