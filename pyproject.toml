@@ -6,8 +6,8 @@ build-backend = "setuptools.build_meta"
 name="ontoclassifier"
 version="0.1.0"
 authors = [
-    {name = "Grégory Bourguin", email = "gregory.bourguin@univ-littoral.fr"},
     {name = "Arnaud Lewandowski", email = "arnaud.lewandowski@univ-littoral.fr"},
+    {name = "Grégory Bourguin", email = "gregory.bourguin@univ-littoral.fr"},
 ]
 description="Ontology-based Pytorch classifier"
 readme = "README.md"
