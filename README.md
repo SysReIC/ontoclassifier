@@ -31,9 +31,6 @@ SysReIC (Systèmes Réflexifs et Ingenierie de la Connaissance)
 <sup>1</sup> gregory.bourguin@univ-littoral.fr  
 <sup>2</sup> arnaud.lewandowski@univ-littoral.fr
 
-## Licence
-
-[CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
 <center>
 
