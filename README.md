@@ -21,6 +21,13 @@ See examples in 3 notebooks:
 - [SCDB notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/SCDB_pipeline.ipynb)
 
 
+### Example: real-time poker hand detection
+
+The following video illustrates how fast the detection pipeline can infer classes. An ontology describing the different poker card suits has been written. A yolo model has been trained to detect individual cards. And the whole pipeline detects cards and infers card suits while explaining it. 
+
+https://github.com/SysReIC/ontoclassifier/assets/78211502/d8b7d6f3-1541-4f58-85d1-cdce4fbab8fe
+
+
 ## Authors
 
 Grégory Bourguin<sup>1</sup> & Arnaud Lewandowski<sup>2</sup>  
