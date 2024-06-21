@@ -23,7 +23,7 @@ See examples in 3 notebooks:
 
 ### Example: real-time poker hand detection
 
-The following video illustrates how fast the detection pipeline can infer classes. An ontology describing the different poker card suits has been written. A yolo model has been trained to detect individual cards. And the whole pipeline detects cards and infers card suits while explaining it. 
+This following video demonstrates the speed of the detection pipeline in inferring classes. An ontology for various poker hands has been developed, and a YOLO model has been trained to detect individual cards. The entire pipeline deduces poker hands while providing explanations throughout the process.
 
 https://github.com/SysReIC/ontoclassifier/assets/78211502/d8b7d6f3-1541-4f58-85d1-cdce4fbab8fe
 
