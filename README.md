@@ -2,7 +2,8 @@
 
 ## What is it ?
 
-The OntoClassifier is a Python module that is fed with domain ontologies to automatically generate ontologically explainable Pytorch classifier models.
+The OntoClassifier is a Python module that is fed with domain ontologies to automatically generate ontologically explainable Pytorch classifier models.<br>
+This proposition subscribes to the XAI (eXplainable AI) research effort.
 
 The role of a generated OntoClassifier model is to compute the satisfiability of ontological class expressions for individuals in order to provide explainable classification.
 The generation process uses an OWL 2 ontology to automatically create a set of Pytorch layers that can deal with OWL 2 DL class expressions, i.e using all logical operators with property restrictions (object and data type), including qualified cardinality restrictions.
@@ -39,6 +40,13 @@ As shown in the following figures, the provided mechanisms can help in providing
 <img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/not_spicy_vege_pizza.png" alt="Ontoclassifier approach" width="600" height="auto">
 </center>
 
+### Fast classification and Explanations
+The following video also demonstrates the speed of the detection pipeline in providing classification and explanations.
+We created a simple PokerHands ontology and trained a YoloV8 model for detecting detect individual cards. The resulting pipeline classifies poker hands while providing explanations throughout the process.
+
+https://github.com/SysReIC/ontoclassifier/assets/78211502/d8b7d6f3-1541-4f58-85d1-cdce4fbab8fe
+
+
 ## How to use it ?
 
 See examples in 3 notebooks:
@@ -46,13 +54,6 @@ See examples in 3 notebooks:
 - [Pizzaiolo classification notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/Pizzaiolo_pipeline.ipynb)
 - [XTRAINS classification notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/XTRAINS_pipeline.ipynb)
 - [SCDB notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/SCDB_pipeline.ipynb)
-
-
-### Example: real-time poker hand detection
-
-This following video demonstrates the speed of the detection pipeline in inferring classes. An ontology for various poker hands has been developed, and a YOLO model has been trained to detect individual cards. The entire pipeline deduces poker hands while providing explanations throughout the process.
-
-https://github.com/SysReIC/ontoclassifier/assets/78211502/d8b7d6f3-1541-4f58-85d1-cdce4fbab8fe
 
 
 ## Authors
