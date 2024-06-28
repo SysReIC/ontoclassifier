@@ -3,6 +3,7 @@
 ## What is it ?
 
 The OntoClassifier is a Python module that is fed with domain ontologies to automatically generate ontologically explainable Pytorch classifier models.<br>
+
 This proposition subscribes to the XAI (eXplainable AI) research effort.
 
 The role of a generated OntoClassifier model is to compute the satisfiability of ontological class expressions for individuals in order to provide explainable classification.
@@ -40,7 +41,7 @@ As shown in the following figures, the provided mechanisms can help in providing
 <img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/not_spicy_vege_pizza.png" alt="Ontoclassifier approach" width="600" height="auto">
 </center>
 
-### Fast classification and Explanations
+### Fast classification and explanations
 The following video also demonstrates the speed of the detection pipeline in providing classification and explanations.
 We created a simple PokerHands ontology and trained a YoloV8 model for detecting detect individual cards. The resulting pipeline classifies poker hands while providing explanations throughout the process.
 
