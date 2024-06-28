@@ -18,7 +18,7 @@ However, note that while the OntoClassifier handles batches of individuals, the 
 
 The OntoClassifier implements a Concept-Based/Bottleneck (CBM) approach: concepts are detected by third-party ML models, and the OntoClassifier uses these concepts to perform multi-label classification according to ontological class expressions.
 
-The following figure illustrates a typical AI pipeline using samples from the [Pizzaïolo Dataset](https://www.kaggle.com/datasets/arnaudlewandowski/pizzaolo-dataset/) : if an ML model (e.g., YoloV8) can detect ingredients on a pizza, the OntoClassifier can infer the pizza recipe and characteristics based on class expressions described in the [Pizzaïolo Ontology](https://zenodo.org/records/10165941).
+The following figure illustrates a typical AI pipeline using samples from the [Pizzaïolo Dataset](https://www.kaggle.com/datasets/arnaudlewandowski/pizzaolo-dataset/) : if an ML model (e.g., YoloV8) can detect ingredients on a pizza, the OntoClassifier can infer the pizza recipe and characteristics based on the 28 class expressions described in the [Pizzaïolo Ontology](https://zenodo.org/records/10165941).
 
 
 <center>
