@@ -1,15 +1,42 @@
-# ontoclassifier
+# OntoClassifier
 
 ## What is it ?
 
-Ontoclassifier is a module implementing a Concept-Based approach. From concepts detected by third-party ML models, the ontoclassifier can infer classes (predictions) corresponding to Description Logic rules. 
+The OntoClassifier is a Python module that is fed with domain ontologies to automatically generate ontologically explainable Pytorch classifier models.
 
-The ontoclassifier can be directly plugged into a pytorch AI pipeline. 
+The role of a generated OntoClassifier model is to compute the satisfiability of ontological class expressions for individuals in order to provide explainable classification.
+The generation process uses an OWL 2 ontology to automatically create a set of Pytorch layers that can deal with OWL 2 DL class expressions, i.e using all logical operators with property restrictions (object and data type), including qualified cardinality restrictions.
 
-For example, if a ML model can detect ingredients on a pizza, the ontoclassifier can infer the pizza receipe and characteristics. Furthermore, this classification is fully transparent and explainable since it is based on logical rules. 
+The OntoClassifier does not aim at replacing well known ontological reasoners like Hermit or Pellet: it will for example not be able to check ontology consistency. 
+It aims at providing targeted ontologically explainable classification based on class expressions while palliating the slowness of usual reasoners and their lack of integration in AI pipelines.
+As in usual classification tasks, the OntoClassifier is able to fast treat batches of individuals. Note that while the OntoClassifier manages batches of individuals, the reasoning process classifies each individual separately (belonging to a different new A-Box).
+
+## Architecture
+
+The OntoClassifier implements a Concept-Based/Bottleneck (CBM) approach :
+concepts are detected by third-party ML models, and the OntoClassifier use these concepts to perform classification according to ontological class expressions. 
+
+The following figure illustrates a typical AI pipeline while using samples from the [Pizzaïolo Dataset](https://www.kaggle.com/datasets/arnaudlewandowski/pizzaolo-dataset/) : 
+if a ML model (e.g., YoloV8) can detect ingredients on a pizza, the OntoClassifier can infer the pizza recipe and characteristics based on class expressions described in the [Pizzaïolo Ontology](https://zenodo.org/records/10165941).
+
 
 <center>
 <img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/ontoclassifier-approach.jpg" alt="Ontoclassifier approach" width="600" height="auto">
+</center>
+
+## XAI (eXplainable AI)
+
+As shown in the following figures, the provided mechanisms can help in providing causal local explanations...
+
+<center>
+<img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/individual_classification.png" alt="Ontoclassifier approach" width="600" height="auto">
+</center>
+
+
+... as well as contrastive ones.
+
+<center>
+<img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/not_spicy_vege_pizza.png" alt="Ontoclassifier approach" width="600" height="auto">
 </center>
 
 ## How to use it ?
