@@ -40,7 +40,8 @@ As shown in the following figure, the provided mechanisms can help in providing 
 <img src="https://github.com/SysReIC/ontoclassifier/raw/main/doc/images/not_spicy_vege_pizza.png" alt="Ontoclassifier approach" width="600" height="auto">
 </center>
 
-### Fast classification and explanations
+### Rapid classification with instant explanations
+
 The following video also demonstrates the speed of the detection pipeline in providing classification and explanations. 
 We created a PokerHands ontology and trained a YoloV8 model to detect individual cards. 
 The resulting hybrid pipeline classifies the 9 classes of poker hands (e.g., Royal Flush, Full House, ...) and displays the generated ontological explanations in real-time video streams.
