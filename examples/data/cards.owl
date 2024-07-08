@@ -1,0 +1,2457 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="https://www.univ-littoral.fr/lisic/sysreic/cards_ontology.owl"
+         xmlns="https://www.univ-littoral.fr/lisic/sysreic/cards_ontology.owl#">
+
+<owl:Ontology rdf:about="https://www.univ-littoral.fr/lisic/sysreic/cards_ontology.owl"/>
+
+<owl:ObjectProperty rdf:about="#hasSymbol">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Card"/>
+  <rdfs:range rdf:resource="#Symbol"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasCard">
+  <rdfs:domain rdf:resource="#Hand"/>
+  <rdfs:range rdf:resource="#Card"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasRank">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Card"/>
+  <rdfs:range rdf:resource="#Rank"/>
+</owl:ObjectProperty>
+
+<owl:Class rdf:about="#Symbol">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Diamond">
+  <rdfs:subClassOf rdf:resource="#Symbol"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Spade">
+  <rdfs:subClassOf rdf:resource="#Symbol"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Heart">
+  <rdfs:subClassOf rdf:resource="#Symbol"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Club">
+  <rdfs:subClassOf rdf:resource="#Symbol"/>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Hand">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Card">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Rank">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+  <rdfs:subClassOf>
+    <owl:Class>
+      <owl:oneOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#2"/>
+        <rdf:Description rdf:about="#3"/>
+        <rdf:Description rdf:about="#4"/>
+        <rdf:Description rdf:about="#5"/>
+        <rdf:Description rdf:about="#6"/>
+        <rdf:Description rdf:about="#7"/>
+        <rdf:Description rdf:about="#8"/>
+        <rdf:Description rdf:about="#9"/>
+        <rdf:Description rdf:about="#10"/>
+        <rdf:Description rdf:about="#J"/>
+        <rdf:Description rdf:about="#Q"/>
+        <rdf:Description rdf:about="#K"/>
+        <rdf:Description rdf:about="#A"/>
+      </owl:oneOf>
+    </owl:Class>
+  </rdfs:subClassOf>
+</owl:Class>
+
+<owl:Class rdf:about="#D2">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#2"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D3">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#3"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D4">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#4"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D5">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#5"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D6">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#6"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D7">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#7"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D8">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#8"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D9">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#9"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#D10">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#10"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DJ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#J"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DQ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#Q"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Q♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DK">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#K"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">K♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#DA">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Diamond"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#A"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A♦︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S2">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#2"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S3">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#3"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S4">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#4"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S5">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#5"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S6">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#6"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S7">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#7"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S8">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#8"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S9">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#9"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#S10">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#10"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SJ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#J"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SQ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#Q"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Q♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SK">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#K"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">K♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#SA">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Spade"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#A"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A♠︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H2">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#2"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H3">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#3"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H4">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#4"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H5">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#5"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H6">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#6"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H7">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#7"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H8">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#8"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H9">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#9"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#H10">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#10"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HJ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#J"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HQ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#Q"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Q❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HK">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#K"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">K❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#HA">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Heart"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#A"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A❤︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C2">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#2"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C3">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#3"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">3♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C4">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#4"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">4♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C5">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#5"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">5♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C6">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#6"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">6♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C7">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#7"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">7♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C8">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#8"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">8♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C9">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#9"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#C10">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#10"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">10♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CJ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#J"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CQ">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#Q"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Q♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CK">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#K"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">K♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#CA">
+  <rdfs:subClassOf rdf:resource="#Card"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasSymbol"/>
+      <owl:someValuesFrom rdf:resource="#Club"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasRank"/>
+      <owl:hasValue rdf:resource="#A"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A♣︎</rdfs:label>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Ace">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#A"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2King">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#K"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Queen">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#Q"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Jack">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#J"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Ten">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#10"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Nine">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#9"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Eight">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#8"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Seven">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#7"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Six">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#6"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Five">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#5"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Four">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#4"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Three">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#3"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Has2Two">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#hasCard"/>
+      <owl:onClass>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRank"/>
+          <owl:hasValue rdf:resource="#2"/>
+        </owl:Restriction>
+      </owl:onClass>
+      <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+    </owl:Restriction>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Flush">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom rdf:resource="#Card"/>
+        </owl:Restriction>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:allValuesFrom>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasSymbol"/>
+                  <owl:someValuesFrom rdf:resource="#Diamond"/>
+                </owl:Restriction>
+              </owl:allValuesFrom>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:allValuesFrom>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasSymbol"/>
+                  <owl:someValuesFrom rdf:resource="#Heart"/>
+                </owl:Restriction>
+              </owl:allValuesFrom>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:allValuesFrom>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasSymbol"/>
+                  <owl:someValuesFrom rdf:resource="#Club"/>
+                </owl:Restriction>
+              </owl:allValuesFrom>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:allValuesFrom>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasSymbol"/>
+                  <owl:someValuesFrom rdf:resource="#Spade"/>
+                </owl:Restriction>
+              </owl:allValuesFrom>
+            </owl:Restriction>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Pair">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#Has2Ace"/>
+            <rdf:Description rdf:about="#Has2King"/>
+            <rdf:Description rdf:about="#Has2Queen"/>
+            <rdf:Description rdf:about="#Has2Jack"/>
+            <rdf:Description rdf:about="#Has2Ten"/>
+            <rdf:Description rdf:about="#Has2Nine"/>
+            <rdf:Description rdf:about="#Has2Eight"/>
+            <rdf:Description rdf:about="#Has2Seven"/>
+            <rdf:Description rdf:about="#Has2Six"/>
+            <rdf:Description rdf:about="#Has2Five"/>
+            <rdf:Description rdf:about="#Has2Four"/>
+            <rdf:Description rdf:about="#Has2Three"/>
+            <rdf:Description rdf:about="#Has2Two"/>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ThreeOfAKind">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#2"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#3"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#4"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#5"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#6"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#7"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#8"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#9"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#10"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#J"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#Q"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#K"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#A"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#FourOfAKind">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#2"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#3"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#4"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#5"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#6"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#7"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#8"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#9"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#10"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#J"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#Q"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#K"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasCard"/>
+              <owl:onClass>
+                <owl:Restriction>
+                  <owl:onProperty rdf:resource="#hasRank"/>
+                  <owl:hasValue rdf:resource="#A"/>
+                </owl:Restriction>
+              </owl:onClass>
+              <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">4</owl:qualifiedCardinality>
+            </owl:Restriction>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightAce">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#A"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#K"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#Q"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#J"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#10"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightKing">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#K"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#Q"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#J"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#10"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#9"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightQueen">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#Q"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#J"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#10"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#9"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#8"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightJack">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#J"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#10"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#9"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#8"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#7"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightTen">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#10"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#9"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#8"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#7"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#6"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightNine">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#9"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#8"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#7"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#6"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#5"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightEight">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#8"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#7"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#6"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#5"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#4"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightSeven">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#7"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#6"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#5"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#4"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#3"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightSix">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#6"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#5"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#4"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#3"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasCard"/>
+          <owl:someValuesFrom>
+            <owl:Restriction>
+              <owl:onProperty rdf:resource="#hasRank"/>
+              <owl:hasValue rdf:resource="#2"/>
+            </owl:Restriction>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Straight">
+  <rdfs:subClassOf rdf:resource="#Hand"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="#StraightAce"/>
+            <rdf:Description rdf:about="#StraightKing"/>
+            <rdf:Description rdf:about="#StraightQueen"/>
+            <rdf:Description rdf:about="#StraightJack"/>
+            <rdf:Description rdf:about="#StraightTen"/>
+            <rdf:Description rdf:about="#StraightNine"/>
+            <rdf:Description rdf:about="#StraightEight"/>
+            <rdf:Description rdf:about="#StraightSeven"/>
+            <rdf:Description rdf:about="#StraightSix"/>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StraightFlush">
+  <rdfs:subClassOf rdf:resource="#Flush"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Flush"/>
+        <rdf:Description rdf:about="#Straight"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#Straight"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RoyalFlush">
+  <rdfs:subClassOf rdf:resource="#Flush"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Flush"/>
+        <rdf:Description rdf:about="#StraightAce"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#StraightAce"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FullHouse">
+  <rdfs:subClassOf rdf:resource="#Pair"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Pair"/>
+        <rdf:Description rdf:about="#ThreeOfAKind"/>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+  <rdfs:subClassOf rdf:resource="#ThreeOfAKind"/>
+</owl:Class>
+
+<owl:Class rdf:about="#TwoPairs">
+  <rdfs:subClassOf rdf:resource="#Pair"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Hand"/>
+        <owl:Class>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Ace"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2King"/>
+                    <rdf:Description rdf:about="#Has2Queen"/>
+                    <rdf:Description rdf:about="#Has2Jack"/>
+                    <rdf:Description rdf:about="#Has2Ten"/>
+                    <rdf:Description rdf:about="#Has2Nine"/>
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2King"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Queen"/>
+                    <rdf:Description rdf:about="#Has2Jack"/>
+                    <rdf:Description rdf:about="#Has2Ten"/>
+                    <rdf:Description rdf:about="#Has2Nine"/>
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Queen"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Jack"/>
+                    <rdf:Description rdf:about="#Has2Ten"/>
+                    <rdf:Description rdf:about="#Has2Nine"/>
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Jack"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Ten"/>
+                    <rdf:Description rdf:about="#Has2Nine"/>
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Ten"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Nine"/>
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Nine"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Eight"/>
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Eight"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Seven"/>
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Seven"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Six"/>
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Six"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Five"/>
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Five"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Four"/>
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Four"/>
+                <owl:Class>
+                  <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="#Has2Three"/>
+                    <rdf:Description rdf:about="#Has2Two"/>
+                  </owl:unionOf>
+                </owl:Class>
+              </owl:intersectionOf>
+            </owl:Class>
+            <owl:Class>
+              <owl:intersectionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="#Has2Three"/>
+                <rdf:Description rdf:about="#Has2Two"/>
+              </owl:intersectionOf>
+            </owl:Class>
+          </owl:unionOf>
+        </owl:Class>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#2">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#3">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#4">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#5">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#6">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#7">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#8">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#9">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#10">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#J">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Q">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#K">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#A">
+  <rdf:type rdf:resource="#Rank"/>
+</owl:NamedIndividual>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Symbol"/>
+    <rdf:Description rdf:about="#Hand"/>
+    <rdf:Description rdf:about="#Card"/>
+    <rdf:Description rdf:about="#Rank"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#D2"/>
+    <rdf:Description rdf:about="#D3"/>
+    <rdf:Description rdf:about="#D4"/>
+    <rdf:Description rdf:about="#D5"/>
+    <rdf:Description rdf:about="#D6"/>
+    <rdf:Description rdf:about="#D7"/>
+    <rdf:Description rdf:about="#D8"/>
+    <rdf:Description rdf:about="#D9"/>
+    <rdf:Description rdf:about="#D10"/>
+    <rdf:Description rdf:about="#DJ"/>
+    <rdf:Description rdf:about="#DQ"/>
+    <rdf:Description rdf:about="#DK"/>
+    <rdf:Description rdf:about="#DA"/>
+    <rdf:Description rdf:about="#S2"/>
+    <rdf:Description rdf:about="#S3"/>
+    <rdf:Description rdf:about="#S4"/>
+    <rdf:Description rdf:about="#S5"/>
+    <rdf:Description rdf:about="#S6"/>
+    <rdf:Description rdf:about="#S7"/>
+    <rdf:Description rdf:about="#S8"/>
+    <rdf:Description rdf:about="#S9"/>
+    <rdf:Description rdf:about="#S10"/>
+    <rdf:Description rdf:about="#SJ"/>
+    <rdf:Description rdf:about="#SQ"/>
+    <rdf:Description rdf:about="#SK"/>
+    <rdf:Description rdf:about="#SA"/>
+    <rdf:Description rdf:about="#H2"/>
+    <rdf:Description rdf:about="#H3"/>
+    <rdf:Description rdf:about="#H4"/>
+    <rdf:Description rdf:about="#H5"/>
+    <rdf:Description rdf:about="#H6"/>
+    <rdf:Description rdf:about="#H7"/>
+    <rdf:Description rdf:about="#H8"/>
+    <rdf:Description rdf:about="#H9"/>
+    <rdf:Description rdf:about="#H10"/>
+    <rdf:Description rdf:about="#HJ"/>
+    <rdf:Description rdf:about="#HQ"/>
+    <rdf:Description rdf:about="#HK"/>
+    <rdf:Description rdf:about="#HA"/>
+    <rdf:Description rdf:about="#C2"/>
+    <rdf:Description rdf:about="#C3"/>
+    <rdf:Description rdf:about="#C4"/>
+    <rdf:Description rdf:about="#C5"/>
+    <rdf:Description rdf:about="#C6"/>
+    <rdf:Description rdf:about="#C7"/>
+    <rdf:Description rdf:about="#C8"/>
+    <rdf:Description rdf:about="#C9"/>
+    <rdf:Description rdf:about="#C10"/>
+    <rdf:Description rdf:about="#CJ"/>
+    <rdf:Description rdf:about="#CQ"/>
+    <rdf:Description rdf:about="#CK"/>
+    <rdf:Description rdf:about="#CA"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDifferent>
+  <owl:distinctMembers rdf:parseType="Collection">
+    <rdf:Description rdf:about="#2"/>
+    <rdf:Description rdf:about="#3"/>
+    <rdf:Description rdf:about="#4"/>
+    <rdf:Description rdf:about="#5"/>
+    <rdf:Description rdf:about="#6"/>
+    <rdf:Description rdf:about="#7"/>
+    <rdf:Description rdf:about="#8"/>
+    <rdf:Description rdf:about="#9"/>
+    <rdf:Description rdf:about="#10"/>
+    <rdf:Description rdf:about="#J"/>
+    <rdf:Description rdf:about="#Q"/>
+    <rdf:Description rdf:about="#K"/>
+    <rdf:Description rdf:about="#A"/>
+  </owl:distinctMembers>
+</owl:AllDifferent>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Diamond"/>
+    <rdf:Description rdf:about="#Spade"/>
+    <rdf:Description rdf:about="#Heart"/>
+    <rdf:Description rdf:about="#Club"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>
