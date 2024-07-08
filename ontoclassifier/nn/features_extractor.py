@@ -1,11 +1,8 @@
-# coding: utf-8
-
 import math
 import torch
 import torch.nn as nn
 from ontoclassifier.wrappers import PropertyWrapper
 
-# import time
 
 class FeaturesExtractor(nn.Module):
     
@@ -20,19 +17,11 @@ class FeaturesExtractor(nn.Module):
             self.property_wrappers.append(pw)
             
     def forward(self, x):
-        total_time = 0
         extracted_features = list()
         for model, pwrappers in self.model_to_pw.items():
             if model:
-                # start_time = time.time()
                 result = model.model(x)
-                # end_time = time.time()
-
-                # with open('/tmp/oc_stats.csv', 'a') as file:
-                #     file.write(str(end_time - start_time) + ';')
-                # print("Model time: " + str(end_time - start_time))
             else:
-                # if no model, output = input
                 result = x
                 
             for pw in pwrappers:
@@ -57,10 +46,7 @@ class Yolov8FeaturesExtractor(FeaturesExtractor):
             corrected_x = x
 
         if len(x.shape) > 4:
-            # si jamais on recoit un stack de stack...
-            # on met les stacks bout à bout 
             corrected_x = torch.row_stack(torch.unbind(corrected_x))
-            # print(" > input reshaped", corrected_x.shape)        
             
         # Padding input dimensions to be multiple of 32 
         # (otherwise may have exception in some cases)
@@ -72,24 +58,11 @@ class Yolov8FeaturesExtractor(FeaturesExtractor):
             pad2 = (multiple * padding2_mult) - corrected_x.shape[3] 
             padding = torch.nn.ReplicationPad2d((0, pad2, 0, pad1))
             corrected_x = padding(corrected_x)
-            # print(" > input padded", corrected_x.shape)
         return corrected_x
     
     
     def forward(self, x):
         return super().forward(self.correct_inputs(x))
         
-
-
-        # extracted_features = list()
-        # for model, pwrappers in self.model_to_pw.items():
-        #     result = model.model(corrected_x)
-        #     for pw in pwrappers:
-        #         #TODO result 
-        #         extracted_features.append(pw.extract_from(result))
-        # # concatenate extracted features and return it
-        # merged_extracted_features = torch.cat(extracted_features, dim=1)
-        # print("FE output:", merged_extracted_features.shape)
-        # return merged_extracted_features
     
     

@@ -1,5 +1,3 @@
-# coding: utf-8
-
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -65,10 +63,7 @@ class OCEViz:
             # Dessiner les boîtes de délimitation
             rect = patches.Rectangle((x1, y1), x2 - x1, y2 - y1, linewidth=2, edgecolor=color, facecolor='none')
             ax.add_patch(rect)
-            
-            # Annoter les boîtes avec les noms des classes
-            # plt.text(x1, y1, class_name, color='white', fontsize=12, bbox=dict(facecolor=color, alpha=0.5))
-        
+                    
         # Créer les patches de légende avec le nombre d'instances
         for key, count in class_counts.items():
             # Convertir les noms des classes en chaînes de caractères

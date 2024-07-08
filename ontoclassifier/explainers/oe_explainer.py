@@ -4,7 +4,6 @@ from ontoclassifier.nn import OntoClassifier, OntologicalExtractor
 from ontoclassifier.explainers import OntoClassifierExplainer, OCEViz
 
 
-# class FeaturesExtractorExplainer:
 class OntologicalExtractorExplainer:
     
     def __init__(self, ontological_extractor: OntologicalExtractor, ontoclassifier: OntoClassifier) -> None:
@@ -32,14 +31,6 @@ class OntologicalExtractorExplainer:
                 + str(self.ontoclassifier.getTargettedClasses())
             )
             
-        # extracted_features = []
-        # for i, feature_extractor in enumerate(self.feature_extractors):
-        #     x_for_feature = x[i]
-        #     extracted_features.append(feature_extractor(x_for_feature))
-
-        # # concatenate extracted features and send it to the classifier
-        # merged_extracted_features = torch.cat(extracted_features, dim=1)
-
         merged_extracted_features = self.onto_extractor(x)
 
         explainer = OntoClassifierExplainer(self.ontoclassifier)
@@ -49,13 +40,8 @@ class OntologicalExtractorExplainer:
 
         for key in explanations.keys():
             reason, result = explanations[key]["reason"], explanations[key]["result"]
-            # print('-', str(key), 'is', result)
-            # print('  because', reason)
             feature_extractor = self.__get_feature_extractor(key.property)
             corresponding_inputs = x[self.all_pw[feature_extractor]]
-
-            # if isinstance(feature_extractor, Yolov8Wrapper) :
-            # TODO: le test marche pas toujours je sais pas pourquoi ??
                 
             if str(type(feature_extractor)) == str(YoloV8PropertyWrapper):
                 if reason is None:

@@ -1,5 +1,3 @@
-# coding=utf-8
-
 import torch
 import torch.nn as nn
 from ultralytics.utils import ops
@@ -26,14 +24,8 @@ class Yolov8ObjectDetector(nn.Module):
                     self.classes_to_detect.append(cl)
 
         self.max_det = max_det
-        # max number of objets (or wagons, etc.) / image
-        # TODO : pourrait être inféré des prédictions yolo ?
 
     def forward(self, inputs):
-        # print("inputs", inputs.shape)
-        
-        # TODO: check if model device is the same as inputs device (cpu, cuda, mps)
-
         if torch.max(inputs).int() > 1:
             corrected_inputs = inputs / 255
         else:
@@ -49,24 +41,17 @@ class Yolov8ObjectDetector(nn.Module):
             pad2 = (multiple * padding2_mult) - corrected_inputs.shape[3] 
             padding = torch.nn.ReplicationPad2d((0, pad2, 0, pad1))
             corrected_inputs = padding(corrected_inputs)
-            # print(" > inputs padded", corrected_inputs.shape)
                 
         preds = self.yolov8.model(corrected_inputs) 
         
         yolov8_predictions = ops.non_max_suppression(
-            preds,  # .detach(),
+            preds,  
             classes=self.classes_to_detect,
-            # conf_thres=0.18,
-            # iou_thres=0.1,
             max_det=self.max_det,
-            # nc=len(self.yolov8.names),
         )
 
         nb_obj_max = max([item.shape[0] for item in yolov8_predictions])
         
-        # batch inference working ?
-        # see https://github.com/ultralytics/ultralytics/issues/1310
-
         # stacking whole batch of results
         # (padding missing spaces with len(names))
         yolov8_predictions_tensor = torch.stack(
@@ -80,8 +65,6 @@ class Yolov8ObjectDetector(nn.Module):
             ]
         )
 
-        # print(yolov8_predictions_tensor)
-        
         # remembering the last prediction for future explaining
         self.last_prediction = yolov8_predictions_tensor
 
@@ -102,25 +85,14 @@ class Yolov8ObjectDetector(nn.Module):
                 upscaled_crops = []
                 
                 for crop in crops:
-                    # print(crop.shape, "=>", upscale_shape)
                     if 0 in crop.shape:
                         crop2 = torch.zeros(upscale_shape)
                         upscaled_crops.append(crop2)
                     else:
-                        # TODO: IS UPSCALING THE BEST SOLUTION ?
                         upscaling = torch.nn.Upsample(size=upscale_shape)
                         crop2 = upscaling(crop.unsqueeze(0).unsqueeze(0))
                         upscaled_crops.append(crop2[0][0])
-                    
-                    # PADDING INSTEAD OF UPSCALING: 
-                    # exw = int(shapemax[1])-crop.shape[1]
-                    # exh = int(shapemax[2]) - crop.shape[2]                    
-                    # crop2 = torch.nn.functional.pad(crop, (0, exh, 0, exw), value=125)
-                    # padded_crops.append(crop2)
-                    # print(crop.shape, "=>", crop2.shape)
-                    
-                    # OTHER POSSIBLE SOLUTION: MASKING
-    
+                        
                 all_upscale_crops.append(torch.stack(upscaled_crops))
             all_upscale_crops = torch.stack(all_upscale_crops)
 
@@ -134,6 +106,4 @@ class Yolov8ObjectDetector(nn.Module):
 
             return [torch.concat(torch.unbind(all_upscale_crops)), 
                     torch.concat(torch.unbind(result.int()))]
-            # return [all_upscale_crops, result.int()]
-
 

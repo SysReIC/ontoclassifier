@@ -94,8 +94,6 @@ class OntoPerfectMatchLayer(OntoSimplifiedInputLayer):
 class OntoSomeLayer(OntoSimplifiedInputLayer):
     def forward(self, inputs):
         self.checkDevice(inputs)
-        # res_sum = torch.einsum('ikj, lk->ilj', self.getFocusedInputs(OntoClassifierHelper.int2bin(inputs)), self._mask)
-        # result = res_sum == self._mask.sum(dim=1).unsqueeze(1)
         focused_inputs = self.getFocusedInputs(inputs)
         result = torch.einsum('ikj, lk->ilkj', self.getFocusedInputs(OntoClassifierHelper.int2bin(inputs)), self._mask)
         res_sum = result.sum(dim=2) 
@@ -104,9 +102,6 @@ class OntoSomeLayer(OntoSimplifiedInputLayer):
 
     def explain(self, value, inputs):
         self.checkDevice(inputs)
-        # res_sum = torch.einsum('ikj, lk->ilj', self.getFocusedInputs(OntoClassifierHelper.int2bin(inputs)), self._mask)
-        # final = res_sum >= self._mask.sum(dim=1).unsqueeze(1)
-        # explanation = torch.einsum('ij, ilj->ilj', final.any(dim=1), res_sum)
         focused_inputs = self.getFocusedInputs(inputs)
         result = torch.einsum('ikj, lk->ilkj', self.getFocusedInputs(OntoClassifierHelper.int2bin(inputs)), self._mask)
         res_sum = result.sum(dim=2) 
@@ -118,20 +113,9 @@ class OntoOnlyLayer(OntoSimplifiedInputLayer):
     def forward(self, inputs):
         self.checkDevice(inputs)
         bin_inputs = self.getFocusedInputs(OntoClassifierHelper.int2bin(inputs))
-        # focused_inputs = self.getFocusedInputs(inputs)
-        # print("bin_inputs ", bin_inputs.shape)
-        # result = torch.einsum('ikj, lk->ilkj', bin_inputs, self._mask)#.transpose(0,1))
-        # res_sum = result.sum(dim=2) 
         res_sum = torch.einsum('ikj, lk->ilj', bin_inputs.float(), self._mask.float()).int()  # .float() for MPS and CUDA support
         final = res_sum == self._mask.sum(dim=1).unsqueeze(1)
-        # print("final ", final.shape)
-        # inter = torch.tile(bin_inputs.any(dim=1).int(), (1,self._mask.shape[0]) ).reshape(final.shape)
-        # print("bin_inpyts summé ", bin_inputs.any(dim=1).shape)
-        # print("inter ", inter.shape)
-        # final_ = torch.logical_or(final, 1-inter.int() ) # pour gérer le 0-fill des individus 
         final = torch.logical_or(final, 1-bin_inputs.any(dim=1).unsqueeze(1).int() ) # pour gérer le 0-fill des individus 
-        # print("PAREILS ? ", final.equal(final_))
-        # print("final!! ", final.shape)
         result = final.any(dim=1).all(dim=1)
         return result#.int()
 
@@ -150,7 +134,6 @@ class OntoOnlyLayer(OntoSimplifiedInputLayer):
 class OntoValueLayer(OntoSimplifiedInputLayer):
     def forward(self, inputs):
         inputs = super().forward(inputs)
-        # inputs = self.getFocusedInputs(inputs)
         res = inputs * self._mask
         return torch.all(res == self._mask, dim=1)
 
@@ -199,17 +182,17 @@ class OntoCardinalityLayer(OntoMaskLayer):
 class OntoMinLayer(OntoCardinalityLayer):
     def forward(self, inputs):
         count = self.getCount(inputs)
-        return (count >= self.cardinalyty)#.int()
+        return (count >= self.cardinalyty)
 
 class OntoMaxLayer(OntoCardinalityLayer):
     def forward(self, inputs):
         count = self.getCount(inputs)
-        return (count <= self.cardinalyty)#.int()
+        return (count <= self.cardinalyty)
 
 class OntoExactlyLayer(OntoCardinalityLayer):
     def forward(self, inputs):
         count = self.getCount(inputs)
-        return (count == self.cardinalyty)#.int()
+        return (count == self.cardinalyty)
 
 class StackLayer(nn.Module):
     def __init__(self, module_list):
@@ -229,7 +212,7 @@ class OntoAndLayer(nn.Module):
 
     def forward(self, inputs):
         inputs = self._stack(inputs)
-        return (inputs.sum(dim=0) == inputs.shape[0])#.int()
+        return (inputs.sum(dim=0) == inputs.shape[0])
 
 class OntoOrLayer(nn.Module):
     def __init__(self, layers):
@@ -238,7 +221,7 @@ class OntoOrLayer(nn.Module):
 
     def forward(self, inputs):
         inputs = self._stack(inputs)
-        return (inputs.sum(dim=0) > 0)#.int()
+        return (inputs.sum(dim=0) > 0)
 
 class OntoNotLayer(nn.Module):
     def __init__(self, layer):
@@ -247,7 +230,7 @@ class OntoNotLayer(nn.Module):
 
     def forward(self, inputs):
         inputs = self._layer(inputs)
-        return inputs.logical_not()#.int()
+        return inputs.logical_not()
 
 
 class OntoDatatypeLayer(OntoFocusedInputLayer):

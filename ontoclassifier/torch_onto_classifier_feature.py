@@ -6,9 +6,6 @@ import torch
 
 from ontoclassifier import OntoClassifierHelper
 
-# TODO: à la création : rajouter au range les superclasses de l'ontologie 
-# TODO: dans l'encoding:  allumer automatiquement les superclasses
-
 class OntoFeature(object):
     def __init__(self, property, property_range=None):
         self.property = property

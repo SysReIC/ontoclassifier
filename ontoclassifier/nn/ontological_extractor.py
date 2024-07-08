@@ -36,7 +36,6 @@ class OntologicalExtractor(nn.Module):
             for feature_extractor in self.features_extractors[i]:
                 extracted_features.append(feature_extractor(x_for_feature))
 
-        # TODO concatenate extracted features and send it to the onto classifier
         merged_extracted_features = torch.cat(extracted_features, dim=1)
         ic("OE output:"+ str(merged_extracted_features.shape))
         return merged_extracted_features

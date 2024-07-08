@@ -8,8 +8,8 @@ class OntoClassifierHelper:
     def bin2int(inputs):
         dim = len(inputs.shape) - 1
         mask = 2 ** torch.arange(inputs.shape[-1] - 1, -1, -1, dtype=torch.int64).to(
-            inputs.device, torch.int64 #inputs.dtype
-        )  # dtype important pour le bitwise_and !!!
+            inputs.device, torch.int64 
+        ) 
         return torch.sum(mask * inputs, dim)
 
     @staticmethod
@@ -22,8 +22,8 @@ class OntoClassifierHelper:
         maximum = inputs.max()
         nb_bits = OntoClassifierHelper.nb_bits_for(maximum)
         mask = 2 ** torch.arange(nb_bits - 1, -1, -1, dtype=torch.int64).to(
-            inputs.device, torch.int64 #inputs.dtype
-        )  # dtype important pour le bitwise_and !!!
+            inputs.device, torch.int64 
+        )  
         mask = mask.unsqueeze(-1)
         result = view.bitwise_and(mask).ne(0).int().transpose(0, 1)
         return result.view(shape[0], shape[1], -1)
@@ -164,7 +164,7 @@ class OntoClassifierHelper:
 
     @staticmethod
     def get_subs(onto_class_list):
-        try:  # check if list or single entity
+        try:  
             _ = iter(onto_class_list)
         except TypeError:
             onto_class_list = [onto_class_list]

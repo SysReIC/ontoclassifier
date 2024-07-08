@@ -1,5 +1,3 @@
-# coding=utf-8
-
 from ontoclassifier import OntoClassifierHelper
 from ontoclassifier.nn import OntoClassifier, OntoIsALayer
 import owlready2
@@ -49,15 +47,6 @@ class OntoClassifierExplainer:
                     details += " & "
             if multiclass: details += "]"
 
-            # multiclass = len(iris) > 1
-            # if multiclass: details += "["
-            # for iri in iris:
-            #     entity = self.onto_classifier.ontology.search(iri=iri)[0]
-            #     details += "%s" % entity.name
-            #     if iri != iris[-1]:
-            #         details += " & "
-            # if multiclass: details += "]"
-
             if idx < last_idx:
                 details += ", "
 
@@ -89,7 +78,6 @@ class OntoClassifierExplainer:
 
         if type(elt) == owlready2.ThingClass:
             if not layer is None:
-                # TODO: isinstance marche pas toujours ??? ???
                 if isinstance(layer, OntoIsALayer) or "OntoIsALayer" in str(type(layer)):
                     result = layer(input).item()
                     explanation = "This is%sa %s " % (" " if result else " NOT ", elt.name)
@@ -112,16 +100,8 @@ class OntoClassifierExplainer:
                             nb += self.__explain_sub(c, classification, input, indent+2, verbose, filter_closest=filter_closest)
                         return nb
 
-        elif type(elt) == owlready2.And: #, owlready2.Or):
-            result = layer(input).item()
-            # op = OntoClassifier.OPERATORS_REPR[type(elt)]
-            # count = 0
-            # for c in elt.Classes:
-            #     if not self.onto_classifier.getExplainerFor(c) is None : count += 1
-            # if count > 1:
-            #     explanation = "%s : %s" % (op, result)
-            #     print(tab + explanation)
-            
+        elif type(elt) == owlready2.And: 
+            result = layer(input).item()            
             nb = 0
             for c in elt.Classes:
                 try:
@@ -133,27 +113,9 @@ class OntoClassifierExplainer:
                     self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
             return nb
                 
-            # for c in elt.Classes:
-            #     self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
-
-            # print(tab + "---")
-
-        elif type(elt) == owlready2.Or: #, owlready2.Or):
+        elif type(elt) == owlready2.Or: 
             result = layer(input).item()
-
             if result != classification: return
-
-            # op = OntoClassifier.OPERATORS_REPR[type(elt)]
-            # count = 0
-            # for c in elt.Classes:
-            #     if not self.onto_classifier.getExplainerFor(c) is None : count += 1
-            # if count > 1:
-            #     explanation = "%s : %s" % (op, result)
-            #     print(tab + explanation)
-
-            # for c in elt.Classes:
-            #     self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
-            #
 
             nb = {}
             for c in elt.Classes:                
@@ -169,16 +131,9 @@ class OntoClassifierExplainer:
             if (result == False and filter_closest):
                 self.__explain_sub(min_key, classification, input, indent, verbose, filter_closest=filter_closest)
             return nb[min_key]
-            # print(tab + "---")
 
         elif type(elt) == owlready2.Not:
-            # result = layer(input).item()
-            # op = OntoClassifierHelper.OPERATORS_REPR[type(elt)]
-            # cl = self.strForRestriction(elt.Class)
-            # explanation = "%s %s is %s" % (op, cl, result)
-            # print(tab + explanation)
             return self.__explain_sub(elt.Class, not classification, input, indent, verbose, filter_closest=filter_closest)
-            # print(tab + "---")
 
         elif type(elt) == owlready2.Restriction:
             reason = None
@@ -242,7 +197,7 @@ class OntoClassifierExplainer:
             return nb_missing
 
         else:
-            print("TODOOOO", type(elt))
+            print("TODO", type(elt))
 
     def strForConstrainedDataType(self, constrainedDataType, property):
         prop = property.name

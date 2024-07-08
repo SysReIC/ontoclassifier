@@ -6,9 +6,7 @@ import torch
 import torch.nn as nn
 from sklearn.preprocessing import MultiLabelBinarizer
 from joblib import dump, load
-# import time
 
-# from ontoclassifier.nn import OntologicalExtractor
 from ontoclassifier.nn import *
 
 
@@ -72,10 +70,6 @@ class OntoClassifier(torch.nn.Module):
             if ontological_extractor is not None:
                 for feature in ontological_extractor.get_ontological_features():
                     self.setTargettedFeature(feature)
-                # for property_wrapper in features_extractor.property_wrappers:
-                    # self.setTargettedFeature(
-                    #     property_wrapper.get_feature()
-                    # )
                 self.buildGraph()
         
     def __buildFeatureInputFocus(self):
@@ -98,15 +92,12 @@ class OntoClassifier(torch.nn.Module):
 
         for class_iri in self._targetted_classes_encoder.classes_:
             onto_class = self.ontology.ontology.search(iri=class_iri)[0]
-            # sub = self.__parse(onto_class.equivalent_to)
-            # ICI TEST
             try:
                 sub = self.__parse(onto_class.equivalent_to)
             except Exception as err:
                 pprint(err)
                 sub = None
             if(sub is None):
-                # raise Exception("PROBLEM with  " + onto_class.name + " : no property to work with !")
                 pprint("[ REMOVING  " + onto_class.name + " : no property to work with. ]")
                 to_remove.append(onto_class)
             else:
@@ -151,7 +142,6 @@ class OntoClassifier(torch.nn.Module):
                             stack.append(encoded_entity)
                     bits = torch.stack(stack).transpose(0,1).int()
                     encoded = OntoClassifierHelper.bin2int(bits)
-                    # ic(p, encoded)
 
                     start, end = self._feature_input_focus[p.iri]
                     res[start:end] = encoded
@@ -275,8 +265,6 @@ class OntoClassifier(torch.nn.Module):
 
             if entity.iri in encoder.classes_ :
                 targets.append(self._getMaskSimple(entity, encoder))
-                # supers = self.getSupers(entity)
-                # targets.append(self._getMaskSimple(supers, encoder))
 
             if type(entity) == owlready2.entity.ThingClass:
                 for i in entity.instances():
@@ -284,11 +272,6 @@ class OntoClassifier(torch.nn.Module):
                 for sub in entity.__subclasses__():
                     targets.append(self._getMaskEquiv(sub, encoder))
 
-        # mask = torch.zeros(len(encoder.classes_))
-        # for t in targets:
-        #     mask = torch.logical_or(mask, t)
-        # return mask.int()
-        
         if len(targets) > 0:
             masks = []
             for t in targets :
@@ -318,19 +301,8 @@ class OntoClassifier(torch.nn.Module):
                 if not idx is None: mask[idx] = 1
             except:
                 pass
-                # ic("[ IGNORED : %s ]" % t)
 
         return mask.int()
-
-    # def _getMaskSupers(self, elt_or_list, encoder):
-
-    #     try: # check if list or single entity
-    #         iterator = iter(elt_or_list)
-    #     except TypeError:
-    #         elt_or_list = [elt_or_list]
-
-    #     targets = self.getSupers(elt_or_list)
-    #     return self._getMaskSimple(targets, encoder).int()
 
 
     def getParentsOf(self, onto_class, inferred=False, full_hierarchy=False):
@@ -394,7 +366,6 @@ class OntoClassifier(torch.nn.Module):
         
         try:
             if not(isinstance(elt, list)) and self._layers_cache.contains(elt):
-                # print("[ USING CACHE FOR ",elt, " ]")
                 return self._layers_cache.get(elt)
         except:
             pass
@@ -415,15 +386,12 @@ class OntoClassifier(torch.nn.Module):
                 part = self.__parse(c, encoder=encoder)
                 if not part is None:
                     parts.append(part)
-                # else:
-                #     elt.Classes.remove(c)
             if len(parts) > 0:
                 if isinstance(parts[0], nn.Module) :
                     layer = OntoAndLayer(parts)
                 else:
                     mask = parts[0]
                     for m in parts[1:]:
-                        # TODO Pourra poser un PB si AND entre plusieurs Multi-classes
                         try: 
                             mask = torch.logical_or(mask, m)
                         except: return None
@@ -439,8 +407,6 @@ class OntoClassifier(torch.nn.Module):
                 part = self.__parse(c, encoder=encoder)
                 if not part is None:
                     parts.append(part)
-                # else:
-                #     elt.Classes.remove(c)
             if len(parts) > 0:
                 if isinstance(parts[0], nn.Module) :
                     layer = OntoOrLayer(parts)
@@ -473,18 +439,12 @@ class OntoClassifier(torch.nn.Module):
 
                     if part is None:
                         raise Exception("PROBLEM with  " + str(elt) + " : No property wrapper")
-                        # pprint("[ IGNORED : " + str(elt) + " ]")
-                        # return None
 
                     feature_input_focus = self._feature_input_focus[prop.iri]
                 except KeyError as err:
                     if encoder is None:
                         raise Exception("PROBLEM with  " + str(elt) + " : No property wrapper")
-                        # return None
 
-                    # ic(err, elt)
-                    # ontology_cloned = self.ontology.clone()
-                    # with ontology_cloned:
                     if self._anonymous_classes_cache.contains(elt):
                         subs = self._anonymous_classes_cache.get(elt)
                     else:
@@ -493,25 +453,17 @@ class OntoClassifier(torch.nn.Module):
                             except: self.temp_class_count = 0
                             new_class = type("temp_class_%d"%self.temp_class_count, (Thing,), {})
                             new_class.equivalent_to.append(elt)
-                            # print("- ", str(elt))
-                            # ic(new_class.equivalent_to)
                             self.syncReasoner()
                             subs = OntoClassifierHelper.get_subs([new_class])
                             subs.remove(new_class)
-                            # ic(subs)
                             new_class.equivalent_to = []
                             destroy_entity(new_class)
-                            # self.syncReasoner()
                             self._anonymous_classes_cache.add(elt, subs)
                             
                     if len(subs) > 0 :
-                        # destroy_entity(new_class)
-                        # del new_class
                         mask = self._getMaskEquiv(subs, encoder)
                         return mask
                     else:
-                        # ICI TEST
-                        # raise Exception("PROBLEM with  " + str(elt) + " : property not present")
                         ic("[ IGNORED : " + str(elt) + "]")
                         return None
 
@@ -541,10 +493,7 @@ class OntoClassifier(torch.nn.Module):
                 try:
                     feature_input_focus = self._feature_input_focus[prop.iri]
                 except KeyError:
-                    # ICI TEST
                     raise Exception("PROBLEM with  " + str(elt) + " : data property not present")
-                    # pprint("[ IGNORED 😵 : " + str(elt) + " ]")
-                    # return None
 
                 prop_str = prop.name
                 if elt.type == owlready2.VALUE:
@@ -552,7 +501,6 @@ class OntoClassifier(torch.nn.Module):
                     layer = OntoDatatypeEQLayer(elt.value, feature_name=prop_str, input_focus=feature_input_focus)
                 else:
                     constrainedDatatype = elt.value
-                    # part, explainer = self.__parse(elt.value, encoder=None)
                     feature_input_focus = self._feature_input_focus[prop.iri]
                     layer = OntoConstrainedDatatypeLayer(constrainedDatatype, feature_name=prop_str, input_focus=feature_input_focus)
 
@@ -569,16 +517,12 @@ class OntoClassifier(torch.nn.Module):
 
         elif isinstance(elt, owlready2.ThingClass):
             try:
-                # TODO  
                 isA_features_enc = self._targetted_ontofeatures[owlready2.ThingClass.iri].get_encoder()
-                # print(">> ", elt.name, isA_features_enc.classes_)
                 if elt.iri in isA_features_enc.classes_:
                     mask = self._getMaskEquiv(elt, isA_features_enc).any(0).int()
-                    # print (">>", elt, " mask = ", mask, mask.shape, mask.any(0))
                     feature_input_focus = self._feature_input_focus[owlready2.ThingClass.iri]
                     layer = OntoIsALayer(mask, feature_name=elt.name, input_focus=feature_input_focus)
                     self._explainers[elt] = layer
-                    # print(">> ", elt.name, mask.shape)
                     self._layers_cache.add(elt, layer)
                     return layer
             except:
@@ -591,7 +535,6 @@ class OntoClassifier(torch.nn.Module):
                     return None
 
                 self._explainers[elt] = mask
-                # print("<<>>", elt.iri, mask.shape)
                 return mask
             else:
                 equiv = []
@@ -603,9 +546,7 @@ class OntoClassifier(torch.nn.Module):
                         equiv.append(c)
 
                 part = self.__parse(equiv)
-                
-                # print(">>>> encoder none ", elt.iri, part)
-                
+                                
                 self._explainers[elt] = part
                 return part
 
@@ -649,7 +590,7 @@ class OntoClassifier(torch.nn.Module):
         
         checked_target_classes = []
         if not isinstance(classes, list):
-            target_classes = [classes] # donc ça sert à rien. # TODO si je corrige, tests échouent. 
+            target_classes = [classes] 
         for target_class in classes:
             if target_class in self.ontology.ontology.classes():
                 checked_target_classes.append(target_class)
@@ -669,7 +610,7 @@ class OntoClassifier(torch.nn.Module):
 
 
     def syncReasoner(self):
-        with self.inferences:  # place le résultat du raisonnement dans cette ontologie
+        with self.inferences:  
             owlready2.sync_reasoner(debug=0, infer_property_values=True)
         return self.inferences
 
@@ -690,8 +631,3 @@ class DictionaryCache:
     def clear(self):
         self.cache.clear()
         
-# class AddTargettedFeatureException(Exception):
-#     def __init__(self, e1, e2, message=""):
-#         msg = "PROBLEM with %s and %s ! " % (e1, e2)
-#         msg += message
-#         super().__init__(msg)
