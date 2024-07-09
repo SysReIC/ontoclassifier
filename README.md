@@ -53,7 +53,7 @@ See examples in 3 notebooks:
 
 - [Pizzaiolo classification notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/Pizzaiolo_pipeline.ipynb)
 - [XTRAINS classification notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/XTRAINS_pipeline.ipynb)
-- [SCDB notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/SCDB_pipeline.ipynb)
+- [SCDB classification notebook](https://github.com/SysReIC/ontoclassifier/blob/main/examples/SCDB_pipeline.ipynb)
 - [Streamlit web application for poker hands detection in live video stream](https://github.com/SysReIC/ontoclassifier/blob/main/examples/poker_app.py)
 
 
