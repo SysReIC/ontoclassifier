@@ -1,7 +1,5 @@
 # OntoClassifier
 
-## What is it ?
-
 The OntoClassifier is a Python module that uses domain ontologies to automatically generate ontologically explainable PyTorch classifier models.<br>
 
 This proposition aligns with the XAI (eXplainable AI) research effort.
