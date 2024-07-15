@@ -1,3 +1,8 @@
+# Start the app with: streamlit run poker_app.py
+
+import sys
+sys.path.append('..')
+
 import streamlit as st
 import cv2
 import numpy as np
@@ -8,8 +13,8 @@ from matplotlib import colors
 from ultralytics import YOLO
 
 import torch
-import torch._dynamo
-torch._dynamo.config.suppress_errors = True
+# import torch._dynamo
+# torch._dynamo.config.suppress_errors = True
 
 from ontoclassifier import *
 import os
