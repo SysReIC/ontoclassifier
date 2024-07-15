@@ -34,7 +34,7 @@ class OntologicalExtractorExplainer:
         merged_extracted_features = self.onto_extractor(x)
 
         explainer = OntoClassifierExplainer(self.ontoclassifier)
-        explanations, results = explainer.explain(
+        explanations, results, textual_explanation = explainer.explain(
             onto_class, merged_extracted_features.squeeze(0)
         )
 

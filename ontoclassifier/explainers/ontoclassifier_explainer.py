@@ -60,10 +60,12 @@ class OntoClassifierExplainer:
     def explain(self, onto_class, features, verbose=True, filter_closest=False):
         input = features.unsqueeze(0)
         self.explanations = {}
+        self.textual_explanation = ""
         classification = self.onto_classifier.getExplainerFor(onto_class)(input).item()
         self.__explain_sub(onto_class, classification, input, verbose=verbose, filter_closest=filter_closest)
-        print()
-        return self.explanations, classification
+        if verbose:
+            print()
+        return self.explanations, classification, self.textual_explanation
 
     def __explain_sub(self, elt, classification, input, indent=0, verbose=True, filter_closest=False):
 
@@ -81,12 +83,14 @@ class OntoClassifierExplainer:
                 if isinstance(layer, OntoIsALayer) or "OntoIsALayer" in str(type(layer)):
                     result = layer(input).item()
                     explanation = "This is%sa %s " % (" " if result else " NOT ", elt.name)
+                    self.textual_explanation += tab + explanation + "\n"
                     if (verbose):
                         print(tab + explanation)
                     return 1
                 else:
                     result = layer(input).item()
                     explanation = "This is%sa %s because : " % (" " if result else " NOT ", elt.name)
+                    self.textual_explanation += tab + explanation + "\n"
                     if (verbose):
                         print(tab + explanation)
                     equiv = elt._equivalent_to
@@ -101,7 +105,9 @@ class OntoClassifierExplainer:
                         return nb
 
         elif type(elt) == owlready2.And: 
-            result = layer(input).item()            
+            result = layer(input).item()
+
+            
             nb = 0
             for c in elt.Classes:
                 try:
@@ -111,10 +117,13 @@ class OntoClassifierExplainer:
                         nb += self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
                 except:
                     self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
+            self.textual_explanation = self.textual_explanation
             return nb
                 
+
         elif type(elt) == owlready2.Or: 
             result = layer(input).item()
+
             if result != classification: return
 
             nb = {}
@@ -123,7 +132,7 @@ class OntoClassifierExplainer:
                     c_layer = self.onto_classifier.getExplainerFor(c)
                     c_result = c_layer(input).item()
                     if (c_result == result): 
-                        nb[c] = self.__explain_sub(c, classification, input, indent, result == True or not(filter_closest), filter_closest=filter_closest)
+                        nb[c] = self.__explain_sub(c, classification, input, indent, (result == True or not(filter_closest)) and verbose, filter_closest=filter_closest)
                 except:
                     self.__explain_sub(c, classification, input, indent, verbose, filter_closest=filter_closest)
 
@@ -187,6 +196,8 @@ class OntoClassifierExplainer:
                 ic(elt.property, "cas non traité")
             
             explanation = "%s is %s %s" % (self.strForRestriction(elt), result, explanation)
+
+            self.textual_explanation += tab + explanation + "\n"
             if (verbose):
                 print(tab + explanation)
             
@@ -195,9 +206,6 @@ class OntoClassifierExplainer:
             self.explanations[elt]['result'] = result
 
             return nb_missing
-
-        else:
-            print("TODO", type(elt))
 
     def strForConstrainedDataType(self, constrainedDataType, property):
         prop = property.name
