@@ -14,7 +14,19 @@ However, note that while the OntoClassifier handles batches of individuals, the 
 
 ## Architecture
 
-The OntoClassifier implements a Concept-Based/Bottleneck (CBM) approach: concepts are detected by third-party ML models, and the OntoClassifier uses these concepts to perform multi-label classification according to ontological class expressions.
+Concept-Based Models (CBM) usually decompose prediction as $h(x) = g(f(x))$, where $f$ extracts interpretable concepts and $g$ performs classification.
+
+The OntoClassifier follows the CBM paradigm but extends it with ontological reasoning: the classification function is redefined such that both components explicitly depend on a domain ontology $\mathcal{O}$. The function $f$ is replaced by an *Ontological Features Extractor* (OFE) that maps input instances from the space $\mathcal{X}$ onto quantified ontological features aligned with the concepts defined in $\mathcal{O}$. The classifier $g$ is replaced by an ontology-based reasoner $R_{\mathcal{O}}$, which performs logical inference according to the axioms and class expressions encoded in $\mathcal{O}$. The output space $\mathcal{Y}$ corresponds to a selection of target classes $C \subseteq \mathcal{C}_{\mathcal{O}}$, each defined by a class expression in $\mathcal{O}$. Formally, the hybrid reasoning pipeline is defined as:
+$$ 
+h(x) = R_{\mathcal{O}}(OFE(x), \mathcal{O}), 
+\quad OFE: \mathcal{X} \to \mathbb{N}^{\mathcal{F}}, 
+\quad R_{\mathcal{O}}: \mathbb{N}^{\mathcal{F}} \times \mathcal{O} \to \mathcal{Y}, \\
+ OFE(x)_{(P,C)} \in \mathbb{N}, 
+\quad (P,C) \in \mathcal{F} \subseteq \mathcal{R} \times \mathcal{C}, \\
+ R_{\mathcal{O}}(OFE(x), \mathcal{O}) 
+= \{\, y \in \mathcal{Y} \mid \mathcal{O} \models \Phi_y(OFE(x)) \,\},
+$$
+where $\mathcal{R}$ and $\mathcal{C}$ denote the sets of object properties (roles) and concept names of $\mathcal{O}$, and $\mathcal{F}$ indexes the set of *ontological features*, each feature $F_i = (P_i, C_i)$ representing a property–filler pair with $C_i \sqsubseteq \mathrm{range}(P_i)$ in $\mathcal{O}$. The OFE quantifies the presence of these ontological features extracted from $x$. The ontology reasoner $R_{\mathcal{O}}$ evaluates the class expressions $\Phi_y$ specified in $\mathcal{O}$ in terms of these features, performing *instance checking* to determine the classes $y \in \mathcal{Y}$ satisfied by the individual represented by $x$.
 
 The following figure illustrates a typical AI pipeline using samples from the [Pizzaïolo Dataset](https://www.kaggle.com/datasets/arnaudlewandowski/pizzaolo-dataset/) : if an ML model (e.g., YoloV8) can detect ingredients on a pizza, the OntoClassifier can infer the pizza recipe and characteristics based on the 28 class expressions described in the [Pizzaïolo Ontology](https://zenodo.org/records/10165941).
 
