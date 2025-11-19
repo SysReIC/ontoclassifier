@@ -22,7 +22,7 @@ $$h(x) = R_{\mathcal{O}}(OFE(x), \mathcal{O}), \quad OFE: \mathcal{X} \to \mathb
 
 $$ OFE(x)_{(P,C)} \in \mathbb{N}, \quad (P,C) \in \mathcal{F} \subseteq \mathcal{R} \times \mathcal{C},$$
 
-$$R_{\mathcal{O}}(OFE(x), \mathcal{O}) = { y \in \mathcal{Y} \mid \mathcal{O} \models \Phi_y(OFE(x)) },$$
+$$R_{\mathcal{O}}(OFE(x), \mathcal{O}) = \\{ y \in \mathcal{Y} \mid \mathcal{O} \models \Phi_y(OFE(x)) \\},$$
 
 where $\mathcal{R}$ and $\mathcal{C}$ denote the sets of object properties (roles) and concept names of $\mathcal{O}$, and $\mathcal{F}$ indexes the set of *ontological features*, each feature $F_i = (P_i, C_i)$ representing a property–filler pair with $C_i \sqsubseteq \mathrm{range}(P_i)$ in $\mathcal{O}$. The OFE quantifies the presence of these ontological features extracted from $x$. The ontology reasoner $R_{\mathcal{O}}$ evaluates the class expressions $\Phi_y$ specified in $\mathcal{O}$ in terms of these features, performing *instance checking* to determine the classes $y \in \mathcal{Y}$ satisfied by the individual represented by $x$.
 
