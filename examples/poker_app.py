@@ -13,8 +13,6 @@ from matplotlib import colors
 from ultralytics import YOLO
 
 import torch
-# import torch._dynamo
-# torch._dynamo.config.suppress_errors = True
 
 from ontoclassifier import *
 import os
